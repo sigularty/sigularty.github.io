@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>compressiontoolkit — Neural Network Compression CLI/API</title>
+<title>Sigularty — Neural Network Compression CLI/API</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/railscasts.min.css">
 <style>
 :root{
@@ -243,7 +243,7 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 <nav>
   <div class="nav-brand">
     <div class="nav-sigil">CT</div>
-    CompressionToolkit
+    Sigularty
   </div>
   <div class="nav-links">
     <a href="#how">How it works</a>
@@ -267,9 +267,9 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
   <div class="hero-inner">
     <div>
       <div class="hero-tag"><div class="hero-tag-dot"></div>v0.1.0 // Multi-Technique Neural Compression Pipeline</div>
-      <div style="font-family:var(--mono);font-size:10px;color:var(--text2);margin-bottom:18px;line-height:1.9;border-left:2px solid var(--wire);padding-left:12px;"><span style="color:var(--green)">[OK]</span> compressiontoolkit v0.1.0 loaded<br><span style="color:var(--green)">[OK]</span> torch backend detected<br><span style="color:var(--amber)">[--]</span> device: auto (cuda if available)<br><span style="color:var(--green)">[OK]</span> pipeline stages: 7</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--text2);margin-bottom:18px;line-height:1.9;border-left:2px solid var(--wire);padding-left:12px;"><span style="color:var(--green)">[OK]</span> Sigularty v0.1.0 loaded<br><span style="color:var(--green)">[OK]</span> torch backend detected<br><span style="color:var(--amber)">[--]</span> device: auto (cuda if available)<br><span style="color:var(--green)">[OK]</span> pipeline stages: 7</div>
       <h1 class="hero-title"><span style="color:var(--text2);font-size:.7em;letter-spacing:0">$&nbsp;</span>compress(<em>model</em>,<br>&nbsp;&nbsp;&nbsp;dataloader)<span class="term-cursor"></span></h1>
-      <p class="hero-sub">CompressionToolkit pipes BN&nbsp;Fusion&nbsp;&rarr;&nbsp;Pruning&nbsp;&rarr;&nbsp;LRF&nbsp;&rarr;&nbsp;Clustering&nbsp;&rarr;&nbsp;KD&nbsp;&rarr;&nbsp;Quantization&nbsp;&rarr;&nbsp;GPTQ into a single automated pipeline &mdash; scored by the <strong style="color:var(--amber)">Compression Quality Index (CQI)</strong> balancing accuracy, size, and latency.</p>
+      <p class="hero-sub">Sigularty pipes BN&nbsp;Fusion&nbsp;&rarr;&nbsp;Pruning&nbsp;&rarr;&nbsp;LRF&nbsp;&rarr;&nbsp;Clustering&nbsp;&rarr;&nbsp;KD&nbsp;&rarr;&nbsp;Quantization&nbsp;&rarr;&nbsp;GPTQ into a single automated pipeline &mdash; scored by the <strong style="color:var(--amber)">Compression Quality Index (CQI)</strong> balancing accuracy, size, and latency.</p>
       <div class="hero-btns">
         <a href="#config" class="btn btn-primary">&gt;_ Configure &amp; Download</a>
         <a href="#how" class="btn btn-ghost">// See the pipeline</a>
@@ -471,26 +471,26 @@ body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradie
 <section id="install">
   <div class="container">
     <div class="sec-tag">Installation</div>
-    <h2>pip install compressiontoolkit</h2>
+    <h2>pip install Sigularty</h2>
     <p class="sec-sub">One command. No C++ extensions. No custom CUDA build. Pip resolves all dependencies.</p>
     <div class="install-block">
       <div class="install-block-hdr"><span class="install-block-lang">bash</span><button class="copy-btn" id="copy-btn" onclick="copyInstall()">[cp] Copy</button></div>
       <div class="install-body">
-        <div class="install-cmd">pip install compressiontoolkit</div>
+        <div class="install-cmd">pip install Sigularty</div>
         <div class="install-extras">
           <code># With structured pruning (torch-pruning):</code>
-          <code>pip install "compressiontoolkit[pruning]"</code>
+          <code>pip install "Sigularty[pruning]"</code>
           <code># Full install (pruning + ONNX export):</code>
-          <code>pip install "compressiontoolkit[full]"</code>
+          <code>pip install "Sigularty[full]"</code>
         </div>
       </div>
     </div>
     <div class="install-cards">
       <div class="install-card"><span class="install-card-ico" style="font-family:var(--mono);font-size:.9rem;color:var(--amber)">&gt; colab</span><h3>Colab Users</h3><p>Configure above, download notebook, upload to Colab, enable GPU Runtime (T4), run all cells.</p><pre>Runtime &rarr; Change runtime type &rarr; GPU (T4)
 Then: Run All</pre></div>
-      <div class="install-card"><span class="install-card-ico" style="font-family:var(--mono);font-size:.9rem;color:var(--amber)">&gt; local</span><h3>Local Users</h3><p>Install, configure above, download your Python script, add your model and dataloader, run.</p><pre>pip install compressiontoolkit
+      <div class="install-card"><span class="install-card-ico" style="font-family:var(--mono);font-size:.9rem;color:var(--amber)">&gt; local</span><h3>Local Users</h3><p>Install, configure above, download your Python script, add your model and dataloader, run.</p><pre>pip install Sigularty
 python compress_my_model.py</pre></div>
-      <div class="install-card"><span class="install-card-ico" style="font-family:var(--mono);font-size:.9rem;color:var(--amber)">&gt; api&nbsp;&nbsp;</span><h3>Python API</h3><p>Two functions: <code style="color:var(--amber)">compress()</code> and <code style="color:var(--amber)">analyze()</code>. The entire public surface.</p><pre>from compressiontoolkit import compress
+      <div class="install-card"><span class="install-card-ico" style="font-family:var(--mono);font-size:.9rem;color:var(--amber)">&gt; api&nbsp;&nbsp;</span><h3>Python API</h3><p>Two functions: <code style="color:var(--amber)">compress()</code> and <code style="color:var(--amber)">analyze()</code>. The entire public surface.</p><pre>from Sigularty import compress
 result = compress(model, dataloader)
 print(result)
 # ratio=3.8x | acc=96.4% retained</pre></div>
@@ -574,7 +574,7 @@ print(result)
           <tr><td>device</td><td>str</td><td>auto</td><td>'cuda' or 'cpu'. Auto-detected when None.</td></tr>
         </tbody>
       </table>
-      <div style="margin-top:16px"><pre style="background:var(--p1);border:1px solid var(--wire);border-radius:var(--r);padding:14px;font-family:var(--mono);font-size:11px;color:var(--text1);overflow-x:auto;line-height:1.7">from compressiontoolkit import analyze
+      <div style="margin-top:16px"><pre style="background:var(--p1);border:1px solid var(--wire);border-radius:var(--r);padding:14px;font-family:var(--mono);font-size:11px;color:var(--text1);overflow-x:auto;line-height:1.7">from Sigularty import analyze
 
 analysis = analyze(model)
 print(analysis.recommended_techniques)
@@ -606,8 +606,8 @@ for layer in analysis.per_layer_signals[:5]:
 <footer>
   <div class="container">
     <div class="footer-in">
-      <div class="footer-links"><a href="https://github.com/compressiontoolkit" target="_blank">GitHub</a><a href="https://pypi.org/project/compressiontoolkit/" target="_blank">PyPI</a><a href="mailto:hello@compressiontoolkit.dev">Contact</a></div>
-      <span class="footer-copy">CompressionToolkit v0.1.0 &middot; 2025</span>
+      <div class="footer-links"><a href="https://github.com/Sigularty" target="_blank">GitHub</a><a href="https://pypi.org/project/Sigularty/" target="_blank">PyPI</a><a href="mailto:hello@Sigularty.dev">Contact</a></div>
+      <span class="footer-copy">Sigularty v0.1.0 &middot; 2025</span>
     </div>
   </div>
 </footer>
@@ -1053,7 +1053,7 @@ for layer in analysis.per_layer_signals[:5]:
 
   // Build compression API call
   function buildCall(k) {
-    let c = 'from compressiontoolkit import compress\n\nresult = compress(\n    model, dataloader,\n    device=None,\n    model_type=\'' + S.pruningModelType + '\',\n    # Techniques\n    use_pruning=' + (S.usePruning ? 'True' : 'False') + ',\n    use_lrf=' + (S.useLrf ? 'True' : 'False') + ',\n    use_clustering=' + (S.useClustering ? 'True' : 'False') + ',\n    use_quantization=' + (S.useQuantization ? 'True' : 'False') + ',\n    use_kd_finetune=' + (S.useKd ? 'True' : 'False') + ',\n    use_gptq=' + (S.useGptq ? 'True' : 'False') + ',\n';
+    let c = 'from Sigularty import compress\n\nresult = compress(\n    model, dataloader,\n    device=None,\n    model_type=\'' + S.pruningModelType + '\',\n    # Techniques\n    use_pruning=' + (S.usePruning ? 'True' : 'False') + ',\n    use_lrf=' + (S.useLrf ? 'True' : 'False') + ',\n    use_clustering=' + (S.useClustering ? 'True' : 'False') + ',\n    use_quantization=' + (S.useQuantization ? 'True' : 'False') + ',\n    use_kd_finetune=' + (S.useKd ? 'True' : 'False') + ',\n    use_gptq=' + (S.useGptq ? 'True' : 'False') + ',\n';
 
     if (S.usePruning) {
       c += '    # Pruning\n    pruning_ratio=' + f2(S.pruningRatio) + ',\n    pruning_max_ratio=' + f2(S.pruningMaxRatio) + ',\n    pruning_model_type=\'' + S.pruningModelType + '\',\n    pruning_fine_tune_epochs=' + S.pruningFtEpochs + ',\n    pruning_fine_tune_lr=' + S.pruningFtLr + ',\n    pruning_cal_batches=' + S.pruningCalBatches + ',\n    pruning_iterative_steps=' + S.pruningIterSteps + ',\n    pruning_isomorphic=' + (S.pruningIsomorphic ? 'True' : 'False') + ',\n    pruning_round_to=' + S.pruningRoundTo + ',\n    find_optimal_pruning=' + (S.findOptimalPruning ? 'True' : 'False') + ',\n    pruning_search_trials=' + S.pruningSearchTrials + ',\n';
@@ -1082,7 +1082,7 @@ for layer in analysis.per_layer_signals[:5]:
   function genPreview() {
     const k = CLUSTER_VALS[S.clusterIdx];
     if (!hasTech())
-      return 'from compressiontoolkit import compress\n\n# Select at least one technique above.\nresult = compress(model, dataloader)';
+      return 'from Sigularty import compress\n\n# Select at least one technique above.\nresult = compress(model, dataloader)';
     return buildCall(k) + '\n\nprint(f"Ratio     : {result.compression_ratio:.2f}x")\nprint(f"Accuracy  : {result.accuracy_retention:.1f}% retained")\nprint(f"Techniques: {chr(44)+chr(32).join(result.techniques_applied)}")';
   }
 
@@ -1143,8 +1143,8 @@ for layer in analysis.per_layer_signals[:5]:
     const info = REG[S.modelId] || REG.custom;
     const k = CLUSTER_VALS[S.clusterIdx];
 
-    const c1 = mkMd('# CompressionToolkit — ' + info.name + '\nGenerated: ' + date + '\n\n---\n**Before running:**\n1. Enable GPU: Runtime -> Change runtime type -> GPU (T4)\n2. Replace model loading code in Cell 4\n3. Replace dataloader code in Cell 5\n4. Run All');
-    const c2 = mkCode('!pip install compressiontoolkit --quiet\nprint("CompressionToolkit installed")');
+    const c1 = mkMd('# Sigularty — ' + info.name + '\nGenerated: ' + date + '\n\n---\n**Before running:**\n1. Enable GPU: Runtime -> Change runtime type -> GPU (T4)\n2. Replace model loading code in Cell 4\n3. Replace dataloader code in Cell 5\n4. Run All');
+    const c2 = mkCode('!pip install Sigularty --quiet\nprint("Sigularty installed")');
     const c3 = mkCode('import torch\nif torch.cuda.is_available():\n    print(f"GPU: {torch.cuda.get_device_name(0)} ({torch.cuda.get_device_properties(0).total_memory/1e9:.1f} GB)")\nelse:\n    print("No GPU - enable via Runtime -> Change runtime type -> GPU")\nprint(f"PyTorch: {torch.__version__}")');
     const loadSnip = getLoadSnip();
     const c4 = mkCode('import torch\n# LOAD YOUR MODEL (' + info.name + ')\n' + loadSnip + '\nassert model is not None, "Load your model above."\nprint(f"Model: {type(model).__name__}  {sum(p.numel() for p in model.parameters()):,} params")');
@@ -1174,7 +1174,7 @@ for layer in analysis.per_layer_signals[:5]:
     const info = REG[S.modelId] || REG.custom;
     const k = CLUSTER_VALS[S.clusterIdx];
 
-    let s = '# Generated by CompressionToolkit - ' + date + '\n# Model: ' + info.name + '\n# Run:     python compress_my_model.py\n# Install: pip install compressiontoolkit\n\nimport torch\ndevice = "cuda" if torch.cuda.is_available() else "cpu"\nprint(f"Device: {device}")\n\n# STEP 2 - Load model\n' + getLoadSnip() + '\nassert model is not None\nprint(f"Model: {type(model).__name__} {sum(p.numel() for p in model.parameters()):,} params")\n\n# STEP 3 - Load dataloader\ndataloader = None  # <- REPLACE THIS\n# Example: from torchvision import datasets, transforms\n# dataloader = DataLoader(datasets.ImageFolder("data/val", transform), batch_size=' + S.batchSize + ')\nassert dataloader is not None\n\n# STEP 4 - Compress\n' + buildCall(k) + '\n\n# STEP 5 - Results\nprint("="*60)\nprint(f"  Ratio    : {result.compression_ratio:.2f}x")\nprint(f"  Accuracy : {result.accuracy_retention:.1f}% retained")\nprint(f"  Size     : {result.size_original_mb:.0f} MB -> {result.size_compressed_mb:.0f} MB")\nprint(f"  Speedup  : {result.latency_speedup:.2f}x")\nprint("="*60)\n\n# STEP 6 - Save\ntorch.save(result.model.state_dict(), "compressed_model.pth")\nprint("Saved -> compressed_model.pth")';
+    let s = '# Generated by Sigularty - ' + date + '\n# Model: ' + info.name + '\n# Run:     python compress_my_model.py\n# Install: pip install Sigularty\n\nimport torch\ndevice = "cuda" if torch.cuda.is_available() else "cpu"\nprint(f"Device: {device}")\n\n# STEP 2 - Load model\n' + getLoadSnip() + '\nassert model is not None\nprint(f"Model: {type(model).__name__} {sum(p.numel() for p in model.parameters()):,} params")\n\n# STEP 3 - Load dataloader\ndataloader = None  # <- REPLACE THIS\n# Example: from torchvision import datasets, transforms\n# dataloader = DataLoader(datasets.ImageFolder("data/val", transform), batch_size=' + S.batchSize + ')\nassert dataloader is not None\n\n# STEP 4 - Compress\n' + buildCall(k) + '\n\n# STEP 5 - Results\nprint("="*60)\nprint(f"  Ratio    : {result.compression_ratio:.2f}x")\nprint(f"  Accuracy : {result.accuracy_retention:.1f}% retained")\nprint(f"  Size     : {result.size_original_mb:.0f} MB -> {result.size_compressed_mb:.0f} MB")\nprint(f"  Speedup  : {result.latency_speedup:.2f}x")\nprint("="*60)\n\n# STEP 6 - Save\ntorch.save(result.model.state_dict(), "compressed_model.pth")\nprint("Saved -> compressed_model.pth")';
 
     return s;
   }
@@ -1247,7 +1247,7 @@ for layer in analysis.per_layer_signals[:5]:
 
   // Copy install command
   function copyInstall() {
-    navigator.clipboard.writeText('pip install compressiontoolkit').then(() => {
+    navigator.clipboard.writeText('pip install Sigularty').then(() => {
       const btn = document.getElementById('copy-btn');
       if (btn) {
         btn.classList.add('ok');
